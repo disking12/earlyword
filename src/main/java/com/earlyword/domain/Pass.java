@@ -6,10 +6,12 @@ import lombok.Getter;
 import lombok.ToString;
 
 @Getter
-@Builder
 @AllArgsConstructor
+@Builder
 @ToString
-public class Item {
-	private Long itemNumber;
-	private String itemName;
+public class Pass {
+
+	private Long passId;
+	private String name;
+	private int price;
 }

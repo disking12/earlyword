@@ -11,12 +11,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder
 @ToString
-public class Subscribe {
-
+public class Subscription {
+	private Long subscriptionId;
 	private Long userId;
-	private Long itemNumber;
-	private int level;
-	private String pass;
-	private LocalDateTime subscribeDate;
-	private LocalDateTime cancelDate;
+	private Long passId;
+	private LocalDateTime startDate;
+	private LocalDateTime endDate;
+	private int difficulty;
 }

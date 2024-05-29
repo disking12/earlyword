@@ -8,11 +8,10 @@ class ItemTest {
 	@Test
 	void 상품도메인_데이터_저장조회() {
 		Item item = Item.builder()
-			.itemName("영어 단어(초급")
-			.itemPrice(10000)
+			.itemName("매일 영어 단어")
 			.build();
 		System.out.println(item);
-		Assertions.assertThat(item.getItemPrice()).isEqualTo(10000);
+		Assertions.assertThat(item.getItemName()).isEqualTo("매일 영어 단어");
 	}
 
 }

@@ -7,14 +7,14 @@ class SubscribeTest {
 
 	@Test
 	void 구독도메인_데이터_저장조회() {
-		Subscribe subscribe = Subscribe.builder()
-			.itemNumber(1L)
+		Subscription subscription = Subscription.builder()
+			.subscriptionId(1L)
 			.userId(1L)
-			.level(1)
-			.pass("기본")
+			.passId(1L)
+			.difficulty(1)
 			.build();
-		System.out.println(subscribe);
-		Assertions.assertThat(subscribe.getItemNumber()).isEqualTo(1L);
+		System.out.println(subscription);
+		Assertions.assertThat(subscription.getSubscriptionId()).isEqualTo(1L);
 	}
 
 }
