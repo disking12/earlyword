@@ -30,4 +30,17 @@ class KakaoPayServiceTest {
 		Assertions.assertThat(readyResponse.getTid()).isNotEmpty();
 	}
 
+	@Test
+	void 카카오페이_승인요청() {
+
+		KakaoPay.ApproveRequest approveRequest = new KakaoPay.ApproveRequest();
+
+		approveRequest.setPartner_order_id("test");
+		approveRequest.setPartner_user_id("test");
+		approveRequest.setTid("T656eda4257c75a5308d");
+		approveRequest.setPg_token("3409a327cc85f75f2022");
+
+		KakaoPay.ApproveResponse approveResponse = kakaoPayService.kakaoPayApprove(approveRequest);
+		System.out.println("approveResponse = " + approveResponse);
+	}
 }
