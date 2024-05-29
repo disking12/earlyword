@@ -51,7 +51,6 @@ public class KakaoPay {
 
 	@Getter	@Setter	@ToString
 	public static class ApproveRequest {
-		private String cid;
 		private String tid;
 		private String partner_order_id;
 		private String partner_user_id;
