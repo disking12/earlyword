@@ -31,6 +31,9 @@ public class KakaoPay {
 		private String tax_free_amount;
 	}
 
+	/**
+	 * 카카오페이 결제 승인 응답
+	 */
 	@Getter	@Setter	@ToString
 	public static class ApproveResponse {
 		private String aid;
@@ -49,6 +52,9 @@ public class KakaoPay {
 		private String payload;
 	}
 
+	/**
+	 * 카카오페이 결제 승인 요청
+	 */
 	@Getter	@Setter	@ToString
 	public static class ApproveRequest {
 		private String tid;
@@ -57,6 +63,9 @@ public class KakaoPay {
 		private String pg_token;
 	}
 
+	/**
+	 * 결제 금액 정보
+	 */
 	@Getter	@Setter	@ToString
 	public static class Amount {
 		private int total;

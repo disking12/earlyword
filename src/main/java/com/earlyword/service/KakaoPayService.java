@@ -29,7 +29,7 @@ public class KakaoPayService {
 	/**
 	 * 카카오페이 결제 준비 요청
 	 */
-	public KakaoPay.ReadyResponse kakaoPayReady(KakaoPay.ReadyRequest readyRequest) {
+	public KakaoPay.ReadyResponse readyKakaoPay(KakaoPay.ReadyRequest readyRequest) {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("cid", CID);
 		params.add("partner_order_id", readyRequest.getPartner_order_id());
@@ -53,7 +53,7 @@ public class KakaoPayService {
 	/**
 	 * 카카오페이 결제 승인 요청
 	 */
-	public KakaoPay.ApproveResponse kakaoPayApprove(KakaoPay.ApproveRequest approveRequest) {
+	public KakaoPay.ApproveResponse approveKakaoPay(KakaoPay.ApproveRequest approveRequest) {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("cid", CID);
 		params.add("tid", approveRequest.getTid());

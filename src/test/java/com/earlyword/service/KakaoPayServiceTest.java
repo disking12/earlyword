@@ -24,7 +24,7 @@ class KakaoPayServiceTest {
 		readyRequest.setPartner_order_id("test");
 		readyRequest.setTax_free_amount("0");
 
-		KakaoPay.ReadyResponse readyResponse = kakaoPayService.kakaoPayReady(readyRequest);
+		KakaoPay.ReadyResponse readyResponse = kakaoPayService.readyKakaoPay(readyRequest);
 		System.out.println("readyResponse = " + readyResponse);
 
 		Assertions.assertThat(readyResponse.getTid()).isNotEmpty();
@@ -40,7 +40,7 @@ class KakaoPayServiceTest {
 		approveRequest.setTid("T656eda4257c75a5308d");
 		approveRequest.setPg_token("3409a327cc85f75f2022");
 
-		KakaoPay.ApproveResponse approveResponse = kakaoPayService.kakaoPayApprove(approveRequest);
+		KakaoPay.ApproveResponse approveResponse = kakaoPayService.approveKakaoPay(approveRequest);
 		System.out.println("approveResponse = " + approveResponse);
 	}
 }
