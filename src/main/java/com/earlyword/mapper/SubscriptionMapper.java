@@ -7,5 +7,5 @@ import com.earlyword.domain.Subscription;
 @Mapper
 public interface SubscriptionMapper {
 
-	Subscription findById(Long id);
+	Subscription findById(Long userId);
 }

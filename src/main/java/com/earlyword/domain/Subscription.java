@@ -15,7 +15,7 @@ public class Subscription {
 	private Long subscriptionId;
 	private Long userId;
 	private Long passId;
+	private int difficulty;
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
-	private int difficulty;
 }
