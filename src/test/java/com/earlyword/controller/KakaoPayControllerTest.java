@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -39,9 +40,9 @@ class KakaoPayControllerTest {
 				.param("tax_free_amount", "0")
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED));
 
-
 		resultActions.andExpect(status().isOk())
-				.andDo(print());
+				.andDo(print())
+				.andDo(log());
 	}
 
 }

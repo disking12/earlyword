@@ -1,9 +1,9 @@
 package com.earlyword.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import com.earlyword.dto.KakaoPay;
 import com.earlyword.service.KakaoPayService;
@@ -23,9 +23,27 @@ public class KakaoPayController {
 	}
 
 	@PostMapping("/ready")
-	public KakaoPay.ReadyResponse readyKakaoPay(KakaoPay.ReadyRequest params) {
+	public KakaoPay.ReadyResponse readyKakaoPay(KakaoPay.ReadyRequest params, HttpSession session) {
 		System.out.println("params = " + params);
-		return kakaoPayService.readyKakaoPay(params);
+
+		KakaoPay.ReadyResponse readyResponse = kakaoPayService.readyKakaoPay(params);
+
+		session.setAttribute("tid", readyResponse.getTid());
+		return readyResponse;
+	}
+
+	@GetMapping("/success")
+	public KakaoPay.ApproveResponse approveKakaoPay(@RequestParam(name = "pg_token") String pgToken, HttpServletRequest request) {
+		System.out.println(request.getSession().getAttribute("tid"));
+
+		String tid = (String) request.getSession().getAttribute("tid");
+		System.out.println("tid = " + tid);
+		System.out.println("pgToken = " + pgToken);
+		KakaoPay.ApproveRequest approveRequest = new KakaoPay.ApproveRequest();
+		approveRequest.setTid(tid);
+		approveRequest.setPg_token(pgToken);
+		return kakaoPayService.approveKakaoPay(approveRequest);
+
 	}
 
 }
