@@ -23,9 +23,9 @@ public class KakaoPayController {
 	}
 
 	@PostMapping("/ready")
-	public void readyKakaoPay(KakaoPay.ReadyRequest params) {
+	public KakaoPay.ReadyResponse readyKakaoPay(KakaoPay.ReadyRequest params) {
 		System.out.println("params = " + params);
-		kakaoPayService.readyKakaoPay(params);
+		return kakaoPayService.readyKakaoPay(params);
 	}
 
 }

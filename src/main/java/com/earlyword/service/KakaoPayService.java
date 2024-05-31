@@ -33,7 +33,7 @@ public class KakaoPayService {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("cid", CID);
 		params.add("partner_order_id", readyRequest.getPartner_order_id());
-		params.add("partner_user_id", readyRequest.getParter_user_id());
+		params.add("partner_user_id", readyRequest.getPartner_user_id());
 		params.add("item_name", readyRequest.getItem_name());
 		params.add("quantity", readyRequest.getQuantity());
 		params.add("total_amount", readyRequest.getTotal_amount());
@@ -47,7 +47,10 @@ public class KakaoPayService {
 
 		RestTemplate restTemplate = new RestTemplate();
 
-		return restTemplate.postForObject(READY_URL, requestEntity, KakaoPay.ReadyResponse.class);
+		KakaoPay.ReadyResponse readyResponse = restTemplate.postForObject(READY_URL, requestEntity,
+			KakaoPay.ReadyResponse.class);
+		System.out.println("readyResponse = " + readyResponse);
+		return readyResponse;
 	}
 
 	/**
