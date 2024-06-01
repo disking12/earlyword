@@ -41,6 +41,7 @@ create table payment (
     user_id int not null,
     pass_id int not null,
     succ_yn int,
+    payment_date timestamp,
     primary key(tid)
 );
 

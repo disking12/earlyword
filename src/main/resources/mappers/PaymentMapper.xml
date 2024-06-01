@@ -6,4 +6,8 @@
         select * from payment where user_id = #{userId};
     </select>
 
+    <insert id="save" parameterType="com.earlyword.domain.Payment">
+        insert into payment (tid, order_id, user_id, pass_id, payment_date) values(#{tid}, #{orderId}, #{userId}, #{passId}, now());
+    </insert>
+
 </mapper>

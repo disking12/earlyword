@@ -75,4 +75,15 @@ public class KakaoPay {
 		private int discount;
 		private int green_deposit;
 	}
+
+	/**
+	 * 결제 정보
+	 */
+	@Getter @Setter @ToString
+	public static class PaymentInfo {
+		private String tid;
+		private String orderId;
+		private int userId;
+		private int passId;
+	}
 }

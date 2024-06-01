@@ -2,6 +2,8 @@ package com.earlyword.domain;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,7 +13,8 @@ public class Payment {
 
     private String tid;
     private String orderId;
-    private int userId;
-    private int passId;
-    private int succYn;
+    private Long userId;
+    private Long passId;
+    private Long succYn;
+    private LocalDateTime paymentDate;
 }
