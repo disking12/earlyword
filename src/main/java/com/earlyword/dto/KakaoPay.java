@@ -22,7 +22,7 @@ public class KakaoPay {
 	 */
 	@Getter	@Setter	@ToString
 	public static class ReadyRequest {
-//		private String partner_order_id;
+		private String partner_order_id;
 		private String partner_user_id;
 		private String item_name;
 		private String quantity;
@@ -74,16 +74,5 @@ public class KakaoPay {
 		private int point;
 		private int discount;
 		private int green_deposit;
-	}
-
-	/**
-	 * 결제 정보
-	 */
-	@Getter @Setter @ToString
-	public static class PaymentInfo {
-		private String tid;
-		private String orderId;
-		private Long userId;
-		private Long passId;
 	}
 }

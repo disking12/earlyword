@@ -12,4 +12,8 @@
         insert into payment (tid, order_id, user_id, pass_id, payment_date) values(#{tid}, #{orderId}, #{userId}, #{passId}, now());
     </insert>
 
+    <update id="update" parameterType="com.earlyword.domain.Payment">
+        update payment set succ_yn = #{succYn} where tid = #{tid}
+    </update>
+
 </mapper>

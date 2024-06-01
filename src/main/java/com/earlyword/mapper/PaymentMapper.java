@@ -7,5 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface PaymentMapper {
 
     Payment findById(Long userId);
+
     int save(Payment payment);
+
+    int update(Payment payment);
 }
