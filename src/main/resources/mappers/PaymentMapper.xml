@@ -2,10 +2,12 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.earlyword.mapper.PaymentMapper">
 
+    <!-- 결제 준비 요청 완료 된 결제 정보 조회 (결제 승인 요청시 필요) -->
     <select id="findById" resultType="com.earlyword.domain.Payment">
-        select * from payment where user_id = #{userId};
+        select * from payment where user_id = #{userId} and succ_yn is null order by payment_date desc limit 1;
     </select>
 
+    <!-- 결제 준비 요청 시 결제 정보 저장 -->
     <insert id="save" parameterType="com.earlyword.domain.Payment">
         insert into payment (tid, order_id, user_id, pass_id, payment_date) values(#{tid}, #{orderId}, #{userId}, #{passId}, now());
     </insert>

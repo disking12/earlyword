@@ -36,7 +36,6 @@ class KakaoPayControllerTest {
 				.param("total_amount", "10000")
 				.param("vat_amount", "1000")
 				.param("partner_user_id", "test")
-				.param("partner_order_id", "test")
 				.param("tax_free_amount", "0")
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED));
 
