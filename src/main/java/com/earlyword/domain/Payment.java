@@ -1,18 +1,17 @@
 package com.earlyword.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @ToString
 public class Payment {
 
     private String tid;
     private String orderId;
-    private String userId;
-    private String passId;g
+    private int userId;
+    private int passId;
+    private int succYn;
 }

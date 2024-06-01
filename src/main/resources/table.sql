@@ -40,8 +40,11 @@ create table payment (
     order_id varchar(100) not null,
     user_id int not null,
     pass_id int not null,
+    succ_yn int,
     primary key(tid)
 );
+
+insert into payment (tid, order_id, user_id, pass_id, succ_yn) values ('adiwadwaj','doijqodo', 1, 1, null);
 
 insert into subscription (user_id, pass_id, difficulty, start_date) values (1, 1, 1, now());
 
