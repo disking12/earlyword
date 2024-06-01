@@ -58,8 +58,6 @@ public class KakaoPayService {
         KakaoPay.ReadyResponse readyResponse = restTemplate.postForObject(READY_URL, requestEntity,
                 KakaoPay.ReadyResponse.class);
 
-        System.out.println("readyResponse = " + readyResponse);
-
         if (!readyResponse.getTid().isEmpty()) {
             Payment payment = Payment.builder()
                     .tid(readyResponse.getTid())

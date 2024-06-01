@@ -22,7 +22,7 @@ public class KakaoPay {
 	 */
 	@Getter	@Setter	@ToString
 	public static class ReadyRequest {
-		private String partner_order_id;
+//		private String partner_order_id;
 		private String partner_user_id;
 		private String item_name;
 		private String quantity;
