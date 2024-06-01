@@ -83,7 +83,7 @@ public class KakaoPay {
 	public static class PaymentInfo {
 		private String tid;
 		private String orderId;
-		private int userId;
-		private int passId;
+		private Long userId;
+		private Long passId;
 	}
 }

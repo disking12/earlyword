@@ -1,6 +1,9 @@
 package com.earlyword.service;
 
+import com.earlyword.domain.Payment;
 import com.earlyword.dto.KakaoPay;
+import com.earlyword.mapper.PaymentMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,7 +15,10 @@ import org.springframework.web.client.RestTemplate;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class KakaoPayService {
+
+    private final PaymentMapper paymentMapper;
 
     private static final String READY_URL = "https://kapi.kakao.com/v1/payment/ready";
     private static final String APPROVE_URL = "https://kapi.kakao.com/v1/payment/approve";
@@ -20,6 +26,7 @@ public class KakaoPayService {
     private static final String SUCCESS_URL = "http://localhost:8080/payment/success";
     private static final String CANCEL_URL = "http://localhost:8080/payment/cancel";
     private static final String FAIL_URL = "http://localhost:8080/payment/fail";
+
     @Value("${kakaopay.cid}")
     private String CID;
     @Value("${kakaopay.adminkey}")
@@ -52,6 +59,16 @@ public class KakaoPayService {
                 KakaoPay.ReadyResponse.class);
 
         System.out.println("readyResponse = " + readyResponse);
+
+        if (!readyResponse.getTid().isEmpty()) {
+            Payment payment = Payment.builder()
+                    .tid(readyResponse.getTid())
+                    .userId(1L)
+                    .passId(1L)
+                    .orderId(partnerOrderId)
+                    .build();
+            paymentMapper.save(payment);
+        }
 
         return readyResponse;
     }
