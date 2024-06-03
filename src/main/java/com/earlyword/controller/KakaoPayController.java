@@ -16,9 +16,9 @@ public class KakaoPayController {
     private final KakaoPayService kakaoPayService;
 
     @PostMapping("/ready")
-    public ResponseEntity readyKakaoPay(KakaoPay.ReadyRequest params) {
-        kakaoPayService.readyKakaoPay(params);
-		return new ResponseEntity(HttpStatus.OK);
+    public KakaoPay.ReadyResponse readyKakaoPay(KakaoPay.ReadyRequest params) {
+        System.out.println("params = " + params);
+        return kakaoPayService.readyKakaoPay(params);
     }
 
     @GetMapping("/success")

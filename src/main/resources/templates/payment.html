@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <button>결제하기</button>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <button onclick="pay()">결제하기</button>
+
+    <script>
+        function pay() {
+            $.ajax({
+                type: 'post',
+                url : '/payment/ready',
+                contentType: 'application/x-www-form-urlencoded',
+                data: {
+                    'item_name': '매일 영어 단어(기본)',
+                    'quantity': '1',
+                    'total_amount': '10000',
+                    'vat_amount': '1000',
+                    'partner_user_id': 'test',
+                    'tax_free_amount': '0'
+                },
+                success: function (result) {
+                    console.log(result);
+                    location.href = result.next_redirect_pc_url;
+                },
+                error: function(request, status, error) {
+                    console.log(error);
+                }
+            })
+        }
+    </script>
 </body>
 </html>
