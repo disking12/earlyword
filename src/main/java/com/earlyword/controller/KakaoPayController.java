@@ -1,20 +1,14 @@
 package com.earlyword.controller;
 
 import com.earlyword.domain.Payment;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
 import com.earlyword.dto.KakaoPay;
 import com.earlyword.service.KakaoPayService;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/payment")
 @RequiredArgsConstructor
 public class KakaoPayController {
@@ -22,14 +16,12 @@ public class KakaoPayController {
     private final KakaoPayService kakaoPayService;
 
     @PostMapping("/ready")
-    @ResponseBody
     public ResponseEntity readyKakaoPay(KakaoPay.ReadyRequest params) {
         kakaoPayService.readyKakaoPay(params);
 		return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping("/success")
-    @ResponseBody
     public KakaoPay.ApproveResponse approveKakaoPay(@RequestParam(name = "pg_token") String pgToken) {
         //현재 로그인 기능이 없어 "test" 계정을 사용
         Payment payment = kakaoPayService.getPaymentInfo(1L);
@@ -42,4 +34,14 @@ public class KakaoPayController {
 
         return kakaoPayService.approveKakaoPay(approveRequest);
     }
+
+	@GetMapping("/fail")
+	public String fail() {
+		return "fail";
+	}
+
+	@GetMapping("/cancel")
+	public String cancel() {
+		return "cancel";
+	}
 }
